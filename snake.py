@@ -21,7 +21,8 @@ food_stamps = []
 
 #Set up positions (x,y) of boxes that make up the snake
 snake = turtle.clone()
-snake.shape("square")
+snake.shape("circle")
+snake.color("blue")
 
 #Hide the turtle object (it's an arrow - we don't need to see it)
 turtle.hideturtle()
