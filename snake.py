@@ -146,10 +146,8 @@ def make_food():
         ##2.WRITE YOUR CODE HERE: Add the food turtle's position to the food positions list
         ##3.WRITE YOUR CODE HERE: Add the food turtle's stamp to the food stamps list
     food.goto(food_x,food_y)
-    id3=food.pos()
-    food_pos.append(id3)
-    food.stamp()
-    food_stamps.append(food.stamp)
+    food_pos.append(food.pos())
+    food_stamps.append(food.stamp())
     
     
 
@@ -190,8 +188,7 @@ def move_snake():
         print("You have eaten the food!")
     
     #HINT: This if statement may be useful for Part 8
-        snake_pos = snake.pos()
-        pos_list.append(snake_pos)
+        new_stamp()
 
     ...
     #Don't change the rest of the code in move_snake() function:
@@ -245,7 +242,7 @@ def move_snake():
 
 
 
-    if pos_list[0]==pos_list[:-1]:
+    if snake.pos() in pos_list[:-2]:
         print("Your head touched a part of your body! Game over!")
         quit()
         
