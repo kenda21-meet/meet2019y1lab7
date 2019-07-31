@@ -3,8 +3,8 @@ import random #We'll need this later in the lab
 
 turtle.tracer(1,0) #This helps the turtle move more smoothly
 
-SIZE_X=800
-SIZE_Y=500
+SIZE_X=1000
+SIZE_Y=1000
 turtle.setup(SIZE_X, SIZE_Y) #Curious? It's the turtle window  
                              #size.    
 turtle.penup()
@@ -21,8 +21,8 @@ food_stamps = []
 
 #Set up positions (x,y) of boxes that make up the snake
 snake = turtle.clone()
-snake.shape("circle")
-snake.color("blue")
+snake.shape("square")
+snake.color("turquoise")
 
 #Hide the turtle object (it's an arrow - we don't need to see it)
 turtle.hideturtle()
@@ -63,13 +63,10 @@ def remove_tail():
 
 snake.direction = "Up"
 
-UP_EDGE = 250
-DOWN_EDGE = -250
-RIGHT_EDGE = 400
-LEFT_EDGE = -400
-
-
-
+UP_EDGE = 600
+DOWN_EDGE = -600
+RIGHT_EDGE = 600
+LEFT_EDGE = -600
 
 def up():
     snake.direction="Up" #Change direction to up 
@@ -106,7 +103,7 @@ turtle.register_shape("trash.gif") #Add trash picture
                       # in the same folder as this Python script
 
 food = turtle.clone()
-food.shape("trash.gif") 
+food.shape("donuty.png") 
 
 #Locations of food
 food_pos = [(100,100), (-100,100), (-100,-100), (100,-100)]
@@ -149,7 +146,6 @@ def make_food():
     food.goto(food_x,food_y)
     food_pos.append(food.pos())
     food_stamps.append(food.stamp())
-    
     
 
 
