@@ -21,7 +21,8 @@ food_stamps = []
 
 #Set up positions (x,y) of boxes that make up the snake
 snake = turtle.clone()
-snake.shape("square")
+turtle.register_shape("pac.gif")
+snake.shape("pac.gif")
 snake.color("turquoise")
 
 #Hide the turtle object (it's an arrow - we don't need to see it)
@@ -97,13 +98,13 @@ turtle.onkeypress(left, "Left")
 turtle.listen()
 
 
-turtle.register_shape("trash.gif") #Add trash picture
+turtle.register_shape("donuty1.gif") #Add trash picture
                       # Make sure you have downloaded this shape 
                       # from the Google Drive folder and saved it
                       # in the same folder as this Python script
 
 food = turtle.clone()
-food.shape("donuty.png") 
+food.shape("donuty1.gif") 
 
 #Locations of food
 food_pos = [(100,100), (-100,100), (-100,-100), (100,-100)]
@@ -138,6 +139,52 @@ def make_food():
     #Pick a position that is a random multiple of SQUARE_SIZE
     food_x = random.randint(min_x,max_x)*SQUARE_SIZE
     food_y = random.randint(min_y,max_y)*SQUARE_SIZE
+
+        ##1.WRITE YOUR CODE HERE: Make the food turtle go to the randomly-generated
+        ##                        position 
+        ##2.WRITE YOUR CODE HERE: Add the food turtle's position to the food positions list
+        ##3.WRITE YOUR CODE HERE: Add the food turtle's stamp to the food stamps list
+    food.goto(food_x,food_y)
+    food_pos.append(food.pos())
+    food_stamps.append(food.stamp())
+
+    
+
+turtle.register_shape("bomby.gif") 
+                    
+bombs = turtle.clone()
+bombs.shape("bomby.gif") 
+
+
+
+#Locations of bombs
+bombs_pos = [(200,200), (-200,200), (-200,-200), (200,-200)]
+bombs_stamps = []
+
+
+
+
+for this_bombs_pos in bombs_pos :
+    ####WRITE YOUR CODE HERE!!
+    bombs.goto(this_bombs_pos)
+    id7=bombs.stamp()
+    bombs_stamps.append(id7)
+    bombs.hideturtle()
+
+
+
+def make_bombs():
+    #The screen positions go from -SIZE/2 to +SIZE/2
+    #But we need to make food pieces only appear on game squares
+    #So we cut up the game board into multiples of SQUARE_SIZE.
+    min2_x=-int(SIZE_X/2/SQUARE_SIZE)+1
+    max2_x=int(SIZE_X/2/SQUARE_SIZE)-1
+    min2_y=-int(SIZE_Y/2/SQUARE_SIZE)+1
+    max2_y=int(SIZE_Y/2/SQUARE_SIZE)-1
+    
+    #Pick a position that is a random multiple of SQUARE_SIZE
+    bombs_x = random.randint(min2_x,max2_x)*SQUARE_SIZE
+    bombs_y = random.randint(min2_y,max2_y)*SQUARE_SIZE
 
         ##1.WRITE YOUR CODE HERE: Make the food turtle go to the randomly-generated
         ##                        position 
@@ -193,7 +240,10 @@ def move_snake():
     #automatically, the function should finish as before with a 
     #call to ontimer()
     #<--Last line of function
-
+    if snake.pos() in bombs_pos:
+        print("you have touched a bomb! Game Over!")
+        quit()
+    
 
 
 
