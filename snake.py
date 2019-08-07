@@ -13,16 +13,22 @@ SQUARE_SIZE = 20
 START_LENGTH = 6
 TIME_STEP = 100
 
+countdown_list=[]
+n=10
+def countdown():
+    global n
+    if n == 0:
+        print("blast off")
+        return
+    print(n)
+    n=n-1
+    countdown_list.append(n)
+    turtle.ontimer(countdown,1000)
+    
 
-'''
-seconds=15
-def timer_fun():
-    for i in range(seconds):
-        s=str(seconds-i)+"seconds remain"
-        time.sleep(1)
-        print(s)
-timer_fun()
-'''
+countdown()
+
+
 
 
 
@@ -207,7 +213,7 @@ def make_bombs():
     food_pos.append(food.pos())
     food_stamps.append(food.stamp())
 '''    
-
+timer_list=[]
 
 def move_snake():
     my_pos = snake.pos()
@@ -263,6 +269,14 @@ def move_snake():
     #remove the last piece of the snake (Hint Functions are FUN!)
     remove_tail()
 
+    '''
+    seconds=15
+    for i in range(seconds):
+        s=str(seconds-i)+"seconds remain"
+        time.sleep(1)
+        timer_list.append(s)
+        print(s) 
+    '''
 
     
     
@@ -305,10 +319,16 @@ def move_snake():
     if snake.pos() in pos_list[:-2]:
         print("Your head touched a part of your body! Game over!")
         quit()
+
+    elif countdown_list[-1]==0:
+        print("time out,you lost!")
+        quit()
         
 
     turtle.ontimer(move_snake,TIME_STEP)
+
 move_snake()
+
 
   
     
