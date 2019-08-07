@@ -1,6 +1,6 @@
 import turtle
 import random #We'll need this later in the lab
-
+import time
 turtle.tracer(1,0) #This helps the turtle move more smoothly
 
 SIZE_X=1000
@@ -12,6 +12,19 @@ turtle.penup()
 SQUARE_SIZE = 20
 START_LENGTH = 6
 TIME_STEP = 100
+
+
+'''
+seconds=15
+def timer_fun():
+    for i in range(seconds):
+        s=str(seconds-i)+"seconds remain"
+        time.sleep(1)
+        print(s)
+timer_fun()
+'''
+
+
 
 #Initialize lists
 pos_list = []
@@ -172,7 +185,7 @@ for this_bombs_pos in bombs_pos :
     bombs.hideturtle()
 
 
-
+'''
 def make_bombs():
     #The screen positions go from -SIZE/2 to +SIZE/2
     #But we need to make food pieces only appear on game squares
@@ -193,7 +206,7 @@ def make_bombs():
     food.goto(food_x,food_y)
     food_pos.append(food.pos())
     food_stamps.append(food.stamp())
-    
+'''    
 
 
 def move_snake():
